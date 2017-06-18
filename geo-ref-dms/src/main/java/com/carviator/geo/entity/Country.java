@@ -30,8 +30,7 @@ public class Country {
 	public Country() {
 	}
 
-	public Country(Long id, String name) {
-		this.id = id;
+	public Country(String name) {
 		this.name = name;
 	}
 

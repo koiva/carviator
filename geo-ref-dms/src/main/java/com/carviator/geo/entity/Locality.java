@@ -5,9 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Shagov on 18/06/2017.
+ */
+
 @Entity
-@Table(name = "District")
-public class District {
+@Table(name = "Locality")
+public class Locality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,12 +24,12 @@ public class District {
     private Country country;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<Locality> localities;
+    private List<Street> streets;
 
-    public District() {
+    public Locality() {
     }
 
-    public District(String name, Country country) {
+    public Locality(String name, Country country) {
         this.name = name;
         this.country = country;
     }
@@ -54,18 +58,18 @@ public class District {
         this.country = country;
     }
 
-    public List<Locality> getLocalities() {
-        return localities;
+    public List<Street> getStreets() {
+        return streets;
     }
 
-    public void setReservationEntityList(List<Locality> localities) {
-        this.localities = localities;
+    public void setStreets(List<Street> streets) {
+        this.streets = streets;
     }
 
-    public void addReservationEntity(Locality locality) {
-        if (null == localities)
-            localities = new ArrayList<>();
+    public void addStreetEntity(Street street) {
+        if (null == streets)
+            streets = new ArrayList<>();
 
-        localities.add(locality);
+        streets.add(street);
     }
 }

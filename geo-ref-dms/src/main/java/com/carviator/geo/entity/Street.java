@@ -5,9 +5,13 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Shagov on 18/06/2017.
+ */
+
 @Entity
-@Table(name = "District")
-public class District {
+@Table(name = "Street")
+public class Street {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,15 +21,15 @@ public class District {
     private String name;
 
     @ManyToOne
-    private Country country;
+    private Locality country;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private List<Locality> localities;
+    private List<Point> points;
 
-    public District() {
+    public Street() {
     }
 
-    public District(String name, Country country) {
+    public Street(String name, Locality country) {
         this.name = name;
         this.country = country;
     }
@@ -46,26 +50,26 @@ public class District {
         this.name = name;
     }
 
-    public Country getCountry() {
+    public Locality getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(Locality country) {
         this.country = country;
     }
 
-    public List<Locality> getLocalities() {
-        return localities;
+    public List<Point> getPoints() {
+        return points;
     }
 
-    public void setReservationEntityList(List<Locality> localities) {
-        this.localities = localities;
+    public void setPoints(List<Point> points) {
+        this.points = points;
     }
 
-    public void addReservationEntity(Locality locality) {
-        if (null == localities)
-            localities = new ArrayList<>();
+    public void addStreetEntity(Point point) {
+        if (null == points)
+            points = new ArrayList<>();
 
-        localities.add(locality);
+        points.add(point);
     }
 }
