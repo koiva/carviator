@@ -1,5 +1,7 @@
 package com.carviator.geo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class District {
     private Country country;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private List<Locality> localities;
 
     public District() {

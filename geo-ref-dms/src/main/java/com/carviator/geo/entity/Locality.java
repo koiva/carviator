@@ -1,5 +1,7 @@
 package com.carviator.geo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -21,17 +23,18 @@ public class Locality {
     private String name;
 
     @ManyToOne
-    private Country country;
+    private District district;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private List<Street> streets;
 
     public Locality() {
     }
 
-    public Locality(String name, Country country) {
+    public Locality(String name, District district) {
         this.name = name;
-        this.country = country;
+        this.district = district;
     }
 
     public Long getId() {
@@ -50,12 +53,12 @@ public class Locality {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public District getDistrict() {
+        return district;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public List<Street> getStreets() {

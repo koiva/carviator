@@ -1,5 +1,7 @@
 package com.carviator.geo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 /**
  * Created by Shagov on 18/06/2017.
  */
+@Entity
+@Table(name = "Continent")
 public class Continent {
 
     @Id
@@ -18,6 +22,7 @@ public class Continent {
     private String name;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private List<Point> points;
 
     public Continent() {

@@ -8,4 +8,5 @@ import com.carviator.geo.entity.Locality;
 import org.springframework.data.repository.CrudRepository;
 
 public interface LocalityRepository extends CrudRepository<Locality, Long> {
+    Locality findByName(String name);
 }
